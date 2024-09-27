@@ -3,13 +3,18 @@ import {
   createOrderCtrl,
   getOrdersCtrl,
 } from "../controllers/order.controller.js";
+import {
+  createOrder,
+  deleteOrderById,
+  getOrderById,
+  getOrders,
+} from "../models/order.model.js";
 
 const ordersRouter = Router();
 
-// ! NO FUNCIONA LA RUTA /orders
-ordersRouter.get("/", getOrdersCtrl);
-
-// ! FALTAN VALIDACIONES DE DATOS
-ordersRouter.post("/", createOrderCtrl);
+ordersRouter.get("/", getOrdersCtrl, getOrders);
+ordersRouter.delete("/:id", deleteOrderById);
+ordersRouter.get("/:id", getOrderById);
+ordersRouter.post("/", createOrderCtrl, createOrder);
 
 export { ordersRouter };

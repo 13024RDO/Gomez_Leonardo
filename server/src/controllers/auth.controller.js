@@ -23,7 +23,11 @@ export const signInCtrl = async (req, res) => {
 
 export const signUpCtrl = async (req, res) => {
   try {
-    // ! Completar la función signUpCtrl
+    if (err) {
+      res.status(200).json({ message: "Sign out success" });
+    }
+    res.clearCookie("authToken");
+    return res.json({ message: "successful logout" });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
@@ -31,8 +35,11 @@ export const signUpCtrl = async (req, res) => {
 
 export const signOutCtrl = (_req, res) => {
   try {
-    // ! Completar la función signOutCtrl
-    res.status(200).json({ message: "Sign out success" });
+    if (err) {
+      res.status(200).json({ message: "Sign out success" });
+    }
+    res.clearCookie("authToken");
+    return res.json({ message: "successful logout" });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
@@ -41,6 +48,18 @@ export const signOutCtrl = (_req, res) => {
 export const getMeCtrl = (req, res) => {
   try {
     res.status(200).json(req.user);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
+export const registerCtrl = (_req, res) => {
+  try {
+    if (err) {
+      res.status(200).json({ message: "Successful Registration" });
+    }
+    res.clearCookie("authToken");
+    return res.json({ message: "Error registering" });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
